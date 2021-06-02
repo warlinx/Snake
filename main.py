@@ -10,7 +10,7 @@ screen = pygame.display.set_mode(WINDOW_SIZE)
 x = randrange(0, WINDOW_WIDTH, OBJECT_SIZE)
 y = randrange(0, WINDOW_HEIGHT, OBJECT_SIZE)
 body_snake = [(x, y)]
-body_snake = [(x, y)]
+length_snake = 1
 dx, dy = 0, 0
 fps = 7
 # Цикл программы
@@ -23,6 +23,8 @@ while True:
     # Изменение координат змейки
     x += dx * OBJECT_SIZE
     y += dy * OBJECT_SIZE
+    body_snake.append((x, y))
+    body_snake = body_snake[-length_snake:]
     # Условие закрытия программы
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
