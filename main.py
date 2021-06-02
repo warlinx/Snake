@@ -38,6 +38,12 @@ while True:
         dx, dy = traffic_dict["A"]
     if key[pygame.K_d] and (dx, dy) != traffic_dict["A"]:
         dx, dy = traffic_dict["D"]
+    # Вызод за границы экрана
+    if x <0 or x > WINDOW_WIDTH or y < 0 or y > WINDOW_HEIGHT:
+        break
+    # Поедание змейкой самой себя
+    if len(body_snake) != len(set(body_snake)):
+        break
     # Условие закрытия программы
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
